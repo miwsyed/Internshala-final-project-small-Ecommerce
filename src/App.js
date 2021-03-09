@@ -1,19 +1,15 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Switch } from 'react-router';
 import Home from './pages/Home';
 import SignIn from './pages/SignIn';
 import PrivateRoute from './components/PrivateRoute';
-
 import './styles/main.scss';
 import PublicRoute from './components/PublicRoute';
-import { ProfileProvider } from './context/profile.context';
 import HeadPhones from './pages/HeadPhones';
 import KeyBoards from './pages/KeyBoards';
-import data from './data';
+import { ProfileProvider } from './context/profile.context';
 
 const App = () => {
-  const { products } = data;
-
   return (
     <ProfileProvider>
       <Switch>
@@ -22,17 +18,17 @@ const App = () => {
         </PublicRoute>
         {/* for only logged in persons */}
         <PrivateRoute path="/">
-          <Home products={products} />
+          <Home />
         </PrivateRoute>
         <PrivateRoute path="/headphones">
-          <HeadPhones products={products} />
+          <HeadPhones />
         </PrivateRoute>
         <PrivateRoute path="/Keyboards">
-          <KeyBoards products={products} />
+          <KeyBoards />
         </PrivateRoute>
       </Switch>
     </ProfileProvider>
   );
 };
 
-export default App;
+export default memo(App);

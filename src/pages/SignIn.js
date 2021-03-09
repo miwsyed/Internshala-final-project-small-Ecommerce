@@ -1,6 +1,8 @@
 import React from 'react';
+import firebase from 'firebase/app';
 import { Alert, Button, Col, Container, Grid, Icon, Panel, Row } from 'rsuite';
 import background from './backgroundSignIn.jpg';
+import { auth, database } from '../misc/firebase';
 
 // in Rsuite Grid it is just like bootstrap but instead of having  12 columns it has 24 columns
 const SignIn = () => {

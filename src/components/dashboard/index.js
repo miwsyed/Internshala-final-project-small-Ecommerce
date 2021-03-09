@@ -10,9 +10,6 @@ const goToHeadPhones = () => {
 const Dashboard = ({ onSignOut }) => {
   const { profile } = useProfile();
 
-  const onSave = async newData => {
-    console.log(newData);
-  };
   const namey = profile.name.split(' ')[0];
 
   return (

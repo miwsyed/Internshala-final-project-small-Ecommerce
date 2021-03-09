@@ -1,8 +1,9 @@
-import React, { useCallback } from 'react';
+import React, { memo, useCallback } from 'react';
 import { Button, Icon, Drawer, Alert } from 'rsuite';
 import { makeStyles } from '@material-ui/core/styles';
 import { useModalState, useMediaQuery } from '../../misc/custom-hooks';
 import Dashboard from '.';
+import { auth } from '../../misc/firebase';
 
 const useStyles = makeStyles({
   root: {
@@ -41,4 +42,4 @@ const DashboardToggle = () => {
     </div>
   );
 };
-export default DashboardToggle;
+export default memo(DashboardToggle);

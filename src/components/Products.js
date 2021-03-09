@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { memo, useState } from 'react';
 import ImgMediaCard from './ProductCard';
 
 const Products = props => {
@@ -10,4 +10,4 @@ const Products = props => {
   );
 };
 
-export default Products;
+export default memo(Products);
