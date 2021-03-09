@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react';
+import React, { useState, memo } from 'react';
 import ImgMediaCard from './ProductCard';
 
 const Products = props => {

@@ -52,7 +52,7 @@ export const ProfileProvider = ({ children }) => {
   }, []);
 
   return (
-    <ProfileContext.Provider value={{ isLoading, profile, products }}>
+    <ProfileContext.Provider value={{ products, isLoading, profile }}>
       <SetCartContext.Provider value={setCart}>
         <CartContext.Provider value={cart}>{children}</CartContext.Provider>
       </SetCartContext.Provider>

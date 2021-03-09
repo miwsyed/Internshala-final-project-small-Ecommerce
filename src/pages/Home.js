@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { useState, memo } from 'react';
 import { Col, Grid, Row } from 'rsuite';
 import Sidebar from '../components/Sidebar';
 import Products from '../components/Products';
@@ -7,6 +7,7 @@ import { useProfile } from '../context/profile.context';
 
 const Home = () => {
   const { products } = useProfile();
+
   return (
     <Grid fluid className="h-100">
       <Navbar />
