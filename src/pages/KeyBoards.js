@@ -1,45 +1,33 @@
-// import React, { memo, useState } from 'react';
+import React, { memo, useState } from 'react';
+import { Col, Grid, Row } from 'rsuite';
+import Sidebar from '../components/Sidebar';
+import PRODUCTKEYBOARD from '../db/keyboards.json';
+import ProductsKeyboards from '../components/ProductsKeyboards';
 
-// const KeyBoards = () => {
-//   const [productKeyboard, setproductKeyboard] = useState([
-//     {
-//       id: '1a',
-//       name: 'Ducky One 2',
-//       price: 100,
-//       currency: 'USD',
-//       delivery: false,
-//       thumbnail:
-//         'https://mechanicalkeyboards.com/shop/images/products/large_DKME1961ST-USPDZZT1_10.jpg',
-//       inStock: true,
-//       categoryId: 'fgsa2142fa',
-//     },
-//     {
-//       id: '2a',
-//       name: 'Varmilo Sakura',
-//       price: 140,
-//       currency: 'USD',
-//       delivery: true,
-//       thumbnail:
-//         'https://mechanicalkeyboards.com/shop/images/products/large_2790_SakuraTKL_1.jpg',
-//       inStock: true,
-//       categoryId: 'fgsa2142fa',
-//     },
-//     {
-//       id: '3a',
-//       name: 'MK Disco',
-//       price: 80,
-//       currency: 'USD',
-//       delivery: true,
-//       thumbnail:
-//         'https://mechanicalkeyboards.com/shop/images/products/large_2017_Disco_White_Caps_1.png',
-//       inStock: false,
-//       categoryId: 'fgsa2142fa',
-//     },
-//   ]);
+const Keyboards = () => {
+  const [products] = useState(PRODUCTKEYBOARD);
 
-//   console.log(productKeyboard);
+  return (
+    <Grid fluid className="h-100">
+      <Row style={{ marginTop: 80 }}>
+        <Col xs={24} md={4}>
+          <Sidebar />
+        </Col>
+      </Row>
 
-//   return <div>Hello</div>;
-// };
+      <div>
+        <Row>
+          <Col xs={24} mdOffset={4} md={20}>
+            {products.map((product, id) => (
+              <div className="displayProducts" key={id}>
+                <ProductsKeyboards product={product} />
+              </div>
+            ))}
+          </Col>
+        </Row>
+      </div>
+    </Grid>
+  );
+};
 
-// export default memo(KeyBoards);
+export default memo(Keyboards);

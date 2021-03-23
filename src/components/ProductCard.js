@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useCallback } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { Col, Panel, Row } from 'rsuite';
-import { useCart, useProfile, useSetCart } from '../context/profile.context';
+import { useCartDispatch } from '../context/profile.context';
 
 const useStyles = makeStyles({
   root: {
@@ -11,15 +11,15 @@ const useStyles = makeStyles({
   },
 });
 
-export default function ImgMediaCard(props) {
-  const setCart = useSetCart();
-  const cart = useCart();
+export default function ImgMediaCard({ product }) {
+  const dispatchCart = useCartDispatch();
 
-  const [allProduct, setProduct] = useState(props);
-  const addToCart = product => {
-    setCart([...cart, allProduct.products.product]);
-  };
-  console.log(cart);
+  const addToCart = useCallback(
+    id => {
+      dispatchCart({ type: 'ADD_ITEM', id });
+    },
+    [dispatchCart]
+  );
 
   const classes = useStyles();
 
@@ -34,14 +34,18 @@ export default function ImgMediaCard(props) {
         <Col xs={24} md={12}>
           <img
             style={{ maxHeight: '15rem', maxWidth: '100%', height: 'auto' }}
-            src={allProduct.products.product.img}
-            alt={allProduct.products.product.alt}
+            src={product.thumbnail}
+            alt={product.alt}
           />
-          <h3>{allProduct.products.product.name}</h3>
-          <div>${allProduct.products.product.price}</div>
+          <h3>{product.name}</h3>
+          <div>${product.price}</div>
         </Col>
         <Col xs={24} md={12}>
-          <Button onClick={addToCart} variant="contained" color="primary">
+          <Button
+            onClick={() => addToCart(product.id)}
+            variant="contained"
+            color="primary"
+          >
             Add To Cart
           </Button>
         </Col>

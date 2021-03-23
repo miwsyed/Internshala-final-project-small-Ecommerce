@@ -1,16 +1,14 @@
-import React, { useState, memo } from 'react';
+import React, { memo, useState } from 'react';
 import { Col, Grid, Row } from 'rsuite';
 import Sidebar from '../components/Sidebar';
 import Products from '../components/Products';
-import Navbar from '../components/Navbar/Navbar';
-import { useProfile } from '../context/profile.context';
+import PRODUCTS from '../db/products.json';
 
 const Home = () => {
-  const { products } = useProfile();
+  const [products] = useState(PRODUCTS);
 
   return (
     <Grid fluid className="h-100">
-      <Navbar />
       <Row style={{ marginTop: 80 }}>
         <Col xs={24} md={4}>
           <Sidebar />

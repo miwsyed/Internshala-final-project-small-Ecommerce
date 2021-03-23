@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import ImgMediaCard from './ProductCard';
 
-const Products = ({ product }) => {
+const ProductsHeadPhones = ({ product }) => {
   return (
     <div>
       <ImgMediaCard product={product} />
@@ -9,4 +9,4 @@ const Products = ({ product }) => {
   );
 };
 
-export default memo(Products);
+export default memo(ProductsHeadPhones);

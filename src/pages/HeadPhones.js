@@ -1,45 +1,33 @@
-// import React, { useState, useCallback } from 'react';
+import React, { memo, useState } from 'react';
+import { Col, Grid, Row } from 'rsuite';
+import Sidebar from '../components/Sidebar';
+import PRODUCTSHEADS from '../db/headphones.json';
+import ProductsHeadPhones from '../components/ProductsHeadPhones';
 
-// const HeadPhone = () => {
-//   const [productHeadPhone, setproductHeadPhone] = useState([
-//     {
-//       id: '4b',
-//       name: 'Razer Kraken',
-//       price: 60,
-//       currency: 'USD',
-//       delivery: false,
-//       thumbnail:
-//         'https://images-na.ssl-images-amazon.com/images/I/71BKQhFzDmL._AC_SY355_.jpg',
-//       inStock: false,
-//       categoryId: 'xasgy42fa',
-//     },
-//     {
-//       id: '5b',
-//       name: 'HyperX Cloud II',
-//       price: 115,
-//       currency: 'USD',
-//       delivery: false,
-//       thumbnail:
-//         'https://images-na.ssl-images-amazon.com/images/I/719KtJ-RAFL._AC_SL1417_.jpg',
-//       inStock: true,
-//       categoryId: 'xasgy42fa',
-//     },
-//     {
-//       id: '6b',
-//       name: 'Sennheiser PC 3 Chat',
-//       price: 60,
-//       currency: 'USD',
-//       delivery: false,
-//       thumbnail:
-//         'https://images-na.ssl-images-amazon.com/images/I/61kIoNSe3VL._SL1500_.jpg',
-//       inStock: true,
-//       categoryId: 'xasgy42fa',
-//     },
-//   ]);
+const HeadPhones = () => {
+  const [products] = useState(PRODUCTSHEADS);
 
-//   console.log(productHeadPhone);
+  return (
+    <Grid fluid className="h-100">
+      <Row style={{ marginTop: 80 }}>
+        <Col xs={24} md={4}>
+          <Sidebar />
+        </Col>
+      </Row>
 
-//   return <div>Hello</div>;
-// };
+      <div>
+        <Row>
+          <Col xs={24} mdOffset={4} md={20}>
+            {products.map((product, id) => (
+              <div className="displayProducts" key={id}>
+                <ProductsHeadPhones product={product} />
+              </div>
+            ))}
+          </Col>
+        </Row>
+      </div>
+    </Grid>
+  );
+};
 
-// export default HeadPhone;
+export default memo(HeadPhones);

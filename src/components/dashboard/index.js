@@ -1,11 +1,7 @@
 import React from 'react';
-import { Redirect } from 'react-router';
+import { Link } from 'react-router-dom';
 import { Drawer, Button, Divider } from 'rsuite';
 import { useProfile } from '../../context/profile.context';
-
-const goToHeadPhones = () => {
-  return <Redirect to={{ pathname: '/headphones' }} />;
-};
 
 const Dashboard = ({ onSignOut }) => {
   const { profile } = useProfile();
@@ -20,9 +16,13 @@ const Dashboard = ({ onSignOut }) => {
 
         <h2 style={{ 'text-align': 'center' }}>Categories</h2>
         <Divider />
-        <Button onclick={goToHeadPhones}>1.HeadPhones</Button>
+        <Link to="/headphones">
+          <Button>1.HeadPhones</Button>
+        </Link>
         <hr />
-        <Button>2.KeyBoards</Button>
+        <Link to="/keyboards">
+          <Button>2.Keyboards</Button>
+        </Link>
       </Drawer.Body>
 
       <Drawer.Footer>
